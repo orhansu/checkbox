@@ -17,8 +17,7 @@
 	  </style>
 	</head>
 
-	<body>	
-
+	<body>
 		<input type="checkbox" id="cbgrup_master" onchange="togglecheckboxes(this,'cbgrup')">Tümünü Seç<hr>
 
 		<?php 
@@ -37,45 +36,43 @@
 		<hr><input type="submit" id="gonder"><hr>
 
 		<div id="liste_goster">
-		<label>Liste Boş</label>
+			<label>Liste Boş</label>
 		</div>
-
-
 	</body>
 
 	<script>
 
 		$(function()
 		{
-		var degerler = [];
+			var degerler = [];
+			
+			$('#gonder').click(function()
+			{
+				document.getElementById("liste_goster").innerHTML="";		
+				var secililer = document.getElementsByClassName('cbgrup');
 
-		$('#gonder').click(function()
-		{
-		document.getElementById("liste_goster").innerHTML="";		
-		var secililer = document.getElementsByClassName('cbgrup');
-
-		for(let i=0; i<secililer.length; i++)
-		{
-		if (secililer[i].checked)
-		{
-		degerler[i]=secililer[i].value;
-		$('#liste_goster').append("<li>"+degerler[i]+"</li>");
-		}
-		}		
-		})
+				for(let i=0; i<secililer.length; i++)
+				{
+					if (secililer[i].checked)
+					{
+						degerler[i]=secililer[i].value;
+						$('#liste_goster').append("<li>"+degerler[i]+"</li>");
+					}
+				}		
+			})
 
 		})
 
 		function togglecheckboxes(tumunu_sec,cbgrup)
 		{
-		var cb_dizi = document.getElementsByClassName(cbgrup);
-		for(var i=0; i<cb_dizi.length; i++)
-		{
-		var cb =document.getElementById(cb_dizi[i].id);
-		cb.checked = tumunu_sec.checked;
+			var cb_dizi = document.getElementsByClassName(cbgrup);
+			
+			for(var i=0; i<cb_dizi.length; i++)
+			{
+				var cb =document.getElementById(cb_dizi[i].id);
+				cb.checked = tumunu_sec.checked;
+			}
 		}
-		}
-
-
+		
 	</script>
 </html>
